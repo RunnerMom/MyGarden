@@ -13,7 +13,7 @@ client = oauth.Client(consumer)
 #Upon accessing the index page, run a check to see if the user has already given authorization.
 @app.route('/')
 def index():
-    return render_template('request_oauth.html')
+    return render_template('login.html')
  
 #If the user needs to give authorization, request a request token and create a link to Linkedin.
 @app.route('/request_oauth')
