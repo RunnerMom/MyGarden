@@ -36,7 +36,7 @@ def index():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-        if current_user is not None and current_user.is_authenticated():
+        if current_user is not None:
                 return redirect(url_for('profile'))
 
         form = LoginForm()
@@ -45,6 +45,7 @@ def login():
                 user= session.query(User).\
                           filter_by(email=form.email.data, password=form.password.data).\
                           first()
+
         
                 if user is not None:
                         login_user(user)        

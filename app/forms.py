@@ -1,7 +1,7 @@
 from flask.ext.wtf import Form, validators
 from flask.ext.wtf import FloatField, TextField, HiddenField
 from flask.ext.wtf import PasswordField, IntegerField, DateField, SubmitField
-from flask.ext.wtf import BooleanField, SelectField, RadioField, SelectMultipleField
+from flask.ext.wtf import BooleanField, SelectField, RadioField, SelectMultipleField, PasswordField
 import model
 
 class AddProduct(Form):
@@ -69,4 +69,8 @@ class Registration(Form):
 	zip_code = TextField('Zip Code',
 		   [validators.Required(message=(u'Please enter your zip code'))],
 		   description='Zip code')
+
+class LoginForm(Form):
+		email = TextField('Email',[validators.Email(message=(u'Invalid email address'))])
+		password= PasswordField('Password', [validators.Required()])
 
