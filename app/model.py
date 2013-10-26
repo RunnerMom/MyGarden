@@ -28,7 +28,7 @@ class User(Base):
     street_address = Column(String(64), nullable=False)
     city = Column(String(64), nullable=False)
     zip_code = Column(String(15), nullable=False)
-    #password = Column(String(64), nullable=False)
+    password = Column(String(64), nullable=False)
 
     orders = relationship('Order', backref=backref('user'))
     products = relationship('Product', backref=backref('user'))
