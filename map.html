@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Testing Out Google Maps</title>
+		<script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
+    </script>
+		<script type="text/javascript" src="gmaps.js"></script>
+	</head>
+	<body
+	<div id="map">
+	</div>
+
+	<script type="text/javascript">
+		var map = new GMaps({
+			div: '#map',
+			lat: -12.043333,
+    		lng: -77.028333,
+			zoom: 13
+		});
+
+		map.addMarkers([{
+    		lat: -12.043333,
+    		lng: -77.028333,
+      		title: 'Lima',
+  			click: function(e) {
+    			alert('You clicked in this marker');
+  				}
+		}, {
+			lat: -12.0429356,
+    		lng: -76.958545,
+      		title: 'Lima',
+		}]);
+	</script>
+
+	<style type="text/css">
+		#map{
+			width: 500;
+			height: 500;
+		}
+	</div>
+</html>
