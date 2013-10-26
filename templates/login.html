@@ -1,0 +1,98 @@
+{% extend 'base.html'%}
+<!-- To delete when merging templates
+======================================-->
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+  <title>Login</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../static/css/bootstrap.css" rel="stylesheet">
+  <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="../static/css/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAVBAR
+    ================================================== -->
+   <div class="navbar navbar-inverse navbar-fixed-top"> 
+     <div class="navbar-inner">
+        <div class = "container">
+          <form action="login" method="post" class="navbar-form pull-right">
+            <input class="span2" type="text" placeholder="Email">
+            <input class="span2" type="password" placeholder="Password">
+            <button type="submit" class="btn">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../static/img/green.jpeg" alt="Title">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 class="text-center">My Garden, Your Garden</h1>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../static/img/mobama.jpeg" alt="Community">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Community</h1>
+              <p class="lead">Get tips from the community on growing your 
+              own garden. See inspiration stories. Make new friends through the community blog.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../static/img/buyer.jpeg" alt="Buyers">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Sharing</h1>
+              <p class="lead">Farmers market may be closer than you think.
+              See what produce is available for purchase from neighbors in your 
+              community.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../static/img/seller.jpeg",  alt="Sellers">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Growing</h1>
+              <p class="lead">Growing your own garden is a great way to relax,
+              create memories with family, and learn new things. Join the 
+              our community to make a healthier neighborhood.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+         
+          $('#myCarousel').carousel({
+            interval:1000;
+        })
+      }(window.jQuery)
+    </script>
+    
+  </body>
+</html>
