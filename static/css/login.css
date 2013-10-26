@@ -4,7 +4,7 @@
 
     body {
       padding-bottom: 40px;
-      color: gray;
+      background-color: black;
     }
 
 
@@ -58,10 +58,6 @@
     -------------------------------------------------- */
 
     /* Carousel base class */
-    .carousel {
-      margin-bottom: 60px;
-    }
-
     .carousel .container {
       position: relative;
       z-index: 9;
@@ -80,11 +76,13 @@
     .carousel .item {
       height: 500px;
     }
-    .carousel img {
+
+  
+    .carousel img{
       position: absolute;
       top: 0;
-      left: 0;
-      min-width: 100%;
+      left: 300px;
+      width: 500px;
       height: 500px;
     }
 
@@ -94,14 +92,28 @@
       max-width: 550px;
       padding: 0 20px;
       margin-top: 200px;
-    }
-    .carousel-caption h1,
-    .carousel-caption .lead {
-      margin: 0;
-      line-height: 1.25;
       color: #fff;
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
     }
+
+    .carousel-caption h1{
+      font-family: 'Pinyon Script', cursive;
+      font-size: 100px;
+      left: 50px;
+      position: absolute;
+    }
+
+    .carousel-caption h2{
+      font-family: 'Rancho', cursive;
+      font-size:60px;
+      line-height: 1.25;
+    }
+    .carousel-caption .lead {
+      font-family: 'Rancho', cursive;
+      font-size:40px;
+      line-height: 1.25;
+    }
+
     .carousel-caption .btn {
       margin-top: 10px;
     }
