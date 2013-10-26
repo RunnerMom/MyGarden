@@ -25,6 +25,10 @@ class User(Base):
 	zip_code = Column(String(15), nullable=False)
 	#password = Column(String(64), nullable=False)
 
+	orders = relationship('Order', backref=backref('user'))
+	products = relationship('Product', backref=backref('user'))
+
+
 class Order(Base):
 	
 	__tablename__ = 'orders'
@@ -32,7 +36,9 @@ class Order(Base):
 	id = Column(Integer, primary_key = True)
 	order_date = Column(DateTime)
 	user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+	product_id = Column(Integer, ForeignKey(''))
 	pickup_date = Column(DateTime)
+
 
 
 class Product(Base):
