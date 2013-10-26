@@ -7,7 +7,7 @@ import os
 AUTHORIZE_URL = "/uas/oauth2/authorization?response_type=code"
 from model import user, User, buyers
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
-from forms import LoginForm
+from forms import LoginForm, AddProduct, CreateOrder
 
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
@@ -48,21 +48,21 @@ def index():
 def login():
         if current_user is not None:
                 return redirect(url_for('profile'))
+        else:
+            form = LoginForm()
+            if form.validate_on_submit():
 
-        form = LoginForm()
-        if form.validate_on_submit():
+                    user= session.query(User).\
+                              filter_by(email=form.email.data, password=form.password.data).\
+                              first()
 
-                user= session.query(User).\
-                          filter_by(email=form.email.data, password=form.password.data).\
-                          first()
-
-        
-                if user is not None:
-                        login_user(user)        
-                else:
-                        flash("Invalid login")
-                
-                return redirect(request.args.get("next") or url_for('profile'))
+            
+                    if user is not None:
+                            login_user(user)        
+                    else:
+                            flash("Invalid login")
+                    
+                    return redirect('login')
                 
         
         return render_template('login.html')
@@ -119,6 +119,13 @@ def logout():
 
 
 
+<<<<<<< HEAD
+=======
+#     session['access_token'] = access_token['oauth_token']
+#     session['access_token_secret'] = access_token['oauth_token_secret']
+#     return redirect('/profile')
+
+>>>>>>> templates
 #     session['access_token'] = access_token['oauth_token']
 #     session['access_token_secret'] = access_token['oauth_token_secret']
 #     return redirect('/profile')
@@ -128,13 +135,38 @@ def logout():
 # #     return redirect('/')
 
 
+<<<<<<< HEAD
 @app.route('/profile', methods=['POST'])
+=======
+@app.route('/profile')
+
+>>>>>>> templates
 def profile():
     return render_template('base.html', user=user)
 
 
 @app.route('/buyProduct')
 def buy_product():
+    form= CreateOrder()
+
+    if form.validate_on_submit():
+
+        order = model.CreateOrder()
+        order.product_id = form.product_id.data
+        order.user_id = form.description.data
+        order.order_date = form.quantity.data
+        order.pickup_date = form.expiration.data
+        quatity = form.unit.data
+        o
+
+        model.session.add(product)
+        model.session.commit()
+
+        flash("Your product has been added to the market!")
+        return render_template('add_product.html', form=form, user=user)
+
+    return render_template('add_product.html', form=form, user=user)
+
     return render_template('buy.html', user=user)
 
 @app.route('/addProduct')
