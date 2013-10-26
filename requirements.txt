@@ -4,6 +4,8 @@ Jinja2==2.7.1
 MarkupSafe==0.18
 SQLAlchemy==0.8.2
 Werkzeug==0.9.4
+argparse==1.2.1
+distribute==0.6.24
 httplib2==0.8
 itsdangerous==0.23
 oauth2==1.5.211
