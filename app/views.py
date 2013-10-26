@@ -6,6 +6,7 @@ import os
 from config import CONSUMER_KEY, CONSUMER_SECRET
 from model import user, buyers
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
+from forms import LoginForm
 
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
@@ -33,15 +34,15 @@ def index():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-        if current_user is not None and current_user.is_authenticated():
+        if current_user is not None:
                 return redirect(url_for('profile'))
 
         form = LoginForm()
         if form.validate_on_submit():
 
-                user= model.session.query(model.User).\
-                          filter_by(email=form.email.data, password=form.password.data).\
-                          first()
+                user=model.sessionquery(model.User).\
+                    filter_by(email=form.email.data,password=form.password.data).\
+                    first()
         
                 if user is not None:
                         login_user(user)        
