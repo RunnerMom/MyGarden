@@ -3,7 +3,9 @@ from app import app
 import urlparse
 import oauth2 as oauth
 import os
-from config import CONSUMER_KEY, CONSUMER_SECRET
+from config import CONSUMER_KEY, CONSUMER_SECRET, api_key
+
+AUTHORIZE_URL = "/uas/oauth2/authorization?response_type=code"
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
 
@@ -13,12 +15,11 @@ client = oauth.Client(consumer)
 #Upon accessing the index page, run a check to see if the user has already given authorization.
 @app.route('/')
 def index():
-    return render_template('login.html')
+    return render_template('login.html', api_key=api_key)
  
 #If the user needs to give authorization, request a request token and create a link to Linkedin.
-@app.route('/request_oauth')
+@app.route('/oauth', methods=['POST'])
 def request_oauth():
-
     request_token_url = 'https://api.linkedin.com/uas/oauth/requestToken'
     resp, content = client.request(request_token_url, "POST")
     if resp['status'] != '200':
