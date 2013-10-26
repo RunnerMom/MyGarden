@@ -1,25 +1,28 @@
 {% extends 'base.html' %}
 
 {% block context %}
-<hr class="featurette-divider">
-
-      <div class="featurette">
-    <div class="featurette">
-        <h2 class="featurette-heading">Produce Market <span class="muted">What would you like to sell today?</span></h2>
+<hr>
+    <div class="addProduct">
+        <div class='addProduct-heading'>
+            <h2>Produce Market <span class="muted">What would you like to sell today?</span></h2>
         <form action="">
             {{form.hidden_tag()}}
-
+        
             <p> Choose a category: {{form.category}}</p>
             <p> Description: {{form.description}} </p>
+        
             <p> Select a price unit: {{form.unit}}</p>
             <p> Price per unit: {{form.price}}</p>
-            <p> When will this product expire? {{form.expiration_date}} </p>
             <p> How many units are you selling? {{form.quantity}}</p>
+        
+            <p> When will this product expire? {{form.expiration_date}} </p>
+        
             <p> Add an image url (Optional): {{form.image_url}} </p>
 
-            <input type="submit" value="Add Produce to Market!">
+            <input  class="button" type="submit" value="Add Produce to Market!">
         </form>
 
+    </div>
     </div>
 
 {% endblock %}

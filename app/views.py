@@ -7,7 +7,7 @@ from config import CONSUMER_KEY, CONSUMER_SECRET, api_key
 AUTHORIZE_URL = "/uas/oauth2/authorization?response_type=code"
 from model import user, User, buyers
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
-from forms import LoginForm
+from forms import LoginForm, AddProduct, CreateOrder
 
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
@@ -48,21 +48,21 @@ def index():
 def login():
         if current_user is not None:
                 return redirect(url_for('profile'))
+        else:
+            form = LoginForm()
+            if form.validate_on_submit():
 
-        form = LoginForm()
-        if form.validate_on_submit():
+                    user= session.query(User).\
+                              filter_by(email=form.email.data, password=form.password.data).\
+                              first()
 
-                user= session.query(User).\
-                          filter_by(email=form.email.data, password=form.password.data).\
-                          first()
-
-        
-                if user is not None:
-                        login_user(user)        
-                else:
-                        flash("Invalid login")
-                
-                return redirect(request.args.get("next") or url_for('profile'))
+            
+                    if user is not None:
+                            login_user(user)        
+                    else:
+                            flash("Invalid login")
+                    
+                    return redirect('login')
                 
         
         return render_template('login.html')
@@ -82,47 +82,47 @@ client = oauth.Client(consumer)
 
 #If the user needs to give authorization, request a request token and create a link to Linkedin.
 
-@app.route('/oauth', methods=['POST'])
-def request_oauth():
-    request_token_url = 'https://api.linkedin.com/uas/oauth/requestToken'
-    resp, content = client.request(request_token_url, "POST")
-    if resp['status'] != '200':
-        raise Exception("Invalid response %s." % resp['status'])
+# @app.route('/oauth', methods=['POST'])
+# def request_oauth():
+#     request_token_url = 'https://api.linkedin.com/uas/oauth/requestToken'
+#     resp, content = client.request(request_token_url, "POST")
+#     if resp['status'] != '200':
+#         raise Exception("Invalid response %s." % resp['status'])
 
-@app.route('/request_oauth')
-def request_oauth():
+# @app.route('/request_oauth')
+# def request_oauth():
 
-    request_token_url = 'https://api.linkedin.com/uas/oauth/requestToken'
-    resp, content = client.request(request_token_url, "POST")
-    if resp['status'] != '200':
-        raise Exception("Invalid response %s." % resp['status'])
+#     request_token_url = 'https://api.linkedin.com/uas/oauth/requestToken'
+#     resp, content = client.request(request_token_url, "POST")
+#     if resp['status'] != '200':
+#         raise Exception("Invalid response %s." % resp['status'])
 
      
-    request_token = dict(urlparse.parse_qsl(content))
+#     request_token = dict(urlparse.parse_qsl(content))
 
-    session['request_token'] = request_token['oauth_token']
-    session['request_token_secret'] = request_token['oauth_token_secret']
-    #Create a Linkedin link containing the request token.
-    authorize_link = '%s?oauth_token=%s' % (AUTHORIZE_URL,request_token['oauth_token'])
-    return render_template("request_oauth.html", auth=authorize_link)
+#     session['request_token'] = request_token['oauth_token']
+#     session['request_token_secret'] = request_token['oauth_token_secret']
+#     #Create a Linkedin link containing the request token.
+#     authorize_link = '%s?oauth_token=%s' % (AUTHORIZE_URL,request_token['oauth_token'])
+#     return render_template("request_oauth.html", auth=authorize_link)
 
-#After the user has authorized, Linkedin will generate another token and redirect back to this route.
-@app.route('/access')
-def get_access():
-    access_token_url = 'https://api.linkedin.com/uas/oauth/accessToken'
+# #After the user has authorized, Linkedin will generate another token and redirect back to this route.
+# @app.route('/access')
+# def get_access():
+#     access_token_url = 'https://api.linkedin.com/uas/oauth/accessToken'
 
-    token = oauth.Token(session['request_token'], session['request_token_secret'])
-    token.set_verifier(oauth_verifier)
-    client = oauth.Client(consumer, token)
+#     token = oauth.Token(session['request_token'], session['request_token_secret'])
+#     token.set_verifier(oauth_verifier)
+#     client = oauth.Client(consumer, token)
      
-    resp, content = client.request(access_token_url, "POST")
-    access_token = dict(urlparse.parse_qsl(content))
+#     resp, content = client.request(access_token_url, "POST")
+#     access_token = dict(urlparse.parse_qsl(content))
 
 
 
-    session['access_token'] = access_token['oauth_token']
-    session['access_token_secret'] = access_token['oauth_token_secret']
-    return redirect('/profile')
+#     session['access_token'] = access_token['oauth_token']
+#     session['access_token_secret'] = access_token['oauth_token_secret']
+#     return redirect('/profile')
 
 #     session['access_token'] = access_token['oauth_token']
 #     session['access_token_secret'] = access_token['oauth_token_secret']
@@ -130,14 +130,33 @@ def get_access():
 
 
 @app.route('/profile')
-@login_required
+
 def profile():
     return render_template('base.html', user=user)
 
 
 @app.route('/buyProduct')
-@login_required
 def buy_product():
+    form= CreateOrder()
+
+    if form.validate_on_submit():
+
+        order = model.CreateOrder()
+        order.product_id = form.product_id.data
+        order.user_id = form.description.data
+        order.order_date = form.quantity.data
+        order.pickup_date = form.expiration.data
+        quatity = form.unit.data
+        o
+
+        model.session.add(product)
+        model.session.commit()
+
+        flash("Your product has been added to the market!")
+        return render_template('add_product.html', form=form, user=user)
+
+    return render_template('add_product.html', form=form, user=user)
+
     return render_template('buy.html', user=user)
 
 @app.route('/addProduct')
