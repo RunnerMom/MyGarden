@@ -49,15 +49,16 @@ def get_access():
     session['access_token_secret'] = access_token['oauth_token_secret']
     return redirect('/')
 
-@app.route('profile', method=['GET'])
-    user = {firstname: Crystal, 
-            lastname: James,
-            email: crystalynn@yahoo.com,
+@app.route('/profile')
+def profile():
+    user = {firstname: 'Crystal', 
+            lastname: 'James',
+            email: 'crystalynn@yahoo.com',
             phone: '+19176916498',
-            street_address = '2 Moneta Court',
-            city = 'Los Angeles',
-            state= 'CA',
-            zip_code = '90061'}
+            street_address: '2 Moneta Court',
+            city: 'Los Angeles',
+            state: 'CA',
+            zip_code: '90061'}
     
     return render_template('base.html', user=user)
 
