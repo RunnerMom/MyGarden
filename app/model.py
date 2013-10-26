@@ -62,3 +62,60 @@ class Product(db.Model):
     # Testing purposes
     def __repr__(self):
         return '<nametag %r>' % (self.nametag)
+
+
+#Test User
+user = {'firstname': 'Crystal', 
+        'lastname': 'James',
+        'email': 'crystalynn@yahoo.com',
+        'phone': '+19176916498',
+        'address': '206 West 112th St',
+        'city': 'Los Angeles',
+        'state': 'CA',
+        'zip_code': '90061'}
+
+#Test Buyers
+buyers = [{'firstname': 'Isiah', 
+            'lastname': 'Richards',
+            'email': 'isiah@yahoo.com',
+            'phone': '+19176916498',
+            'address': '101 Broadway St', 
+            'city': 'Los Angeles',
+            'state': 'CA',
+            'zip_code': '90061'},
+
+            {'firstname': 'Courtney', 
+            'lastname': 'Oliva',
+            'email': 'courtney@yahoo.com',
+            'phone': '+1917691649C8',
+            'address': '1056 Main Street',
+            'city': 'Los Angeles',
+            'state': 'CA',
+            'zip_code': '90061'},
+
+            {'firstname': 'JoAnn', 
+            'lastname': 'Walker',
+            'email': 'joann@yahoo.com',
+            'phone': '+19176916498',
+            'address': '218 W. 112th Street',
+            'city': 'Los Angeles',
+            'state': 'CA',
+            'zip_code': '90061'},
+
+            {'firstname': 'Aimee', 
+            'lastname': 'Morgan',
+            'email': 'aimee@yahoo.com',
+            'phone': '+19176916498',
+            'address': '1512 Crenshaw Blvd',
+            'city': 'Los Angeles',
+            'state': 'CA',
+            'zip_code': '90061'},
+
+            {'firstname': 'Morgan', 
+            'lastname': 'Griggs',
+            'email': 'morgan@yahoo.com',
+            'phone': '+19176916498',
+            'address': '1220 Crenshaw Blvd',
+            'city': 'Los Angeles',
+            'state': 'CA',
+            'zip_code': '90061'}]

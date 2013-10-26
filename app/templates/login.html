@@ -9,6 +9,9 @@
   <link href="../static/css/bootstrap.css" rel="stylesheet">
   <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="../static/css/login.css" rel="stylesheet">
+  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: {{ api_key }}
+  </script>
 </head>
 
 <body>
@@ -17,11 +20,9 @@
    <div class="navbar navbar-inverse navbar-fixed-top"> 
      <div class="navbar-inner">
         <div class = "container">
-          <form action="login" method="post" class="navbar-form pull-right">
-            <input class="span2" type="text" placeholder="Email">
-            <input class="span2" type="password" placeholder="Password">
-            <button type="submit" class="btn">Sign in</button>
-          </form>
+          <script type="in/Login">
+          Hello, <?js= firstName ?> <?js= lastName ?>.
+          </script>
         </div>
       </div>
     </div>

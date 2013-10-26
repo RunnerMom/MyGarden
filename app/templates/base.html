@@ -7,11 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Pinyon+Script|Rancho' rel='stylesheet' type='text/css'>
 	<link href="../static/css/bootstrap.css" rel="stylesheet">
-  <!-- <link href="{{url_for('../static', filename='css/bootstrap.min.css')}}" rel="stylesheet"> -->
+  
   <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
-  <!-- <link href="{{url_for('../static', filename='css/bootstrap-responsive.css')}}" rel="stylesheet"> -->
+  
   <link href="../static/css/login.css" rel="stylesheet">
-  <!-- <link href="{{url_for('../static', filename='css/login.css')}}" rel="stylesheet"> -->
+  
     
     <style type="text/css">
       body {
@@ -30,7 +30,6 @@
      <div class="navbar-inner">
         <div class = "container">
          	<h1> My Garden, Your Garden </h1>
-        </div>
       </div>
     </div>
 
@@ -46,25 +45,31 @@
         </div>
         <div class="span4">
           <form action='/profile' method='GET'>
-          <table>
-            <tr><p> Welcome {{user.firstname}} {{user.lastname}} </p></tr>
-            <tr><p> Email: {{user.email}}</p></tr>
+          <table class="table profile">
+            <tr><h2> Welcome {{user.firstname}} {{user.lastname}} </h2></tr>
+            <tr><h2> Email: {{user.email}}</h2></tr>
+            <tr><h2> Address:</h2></tr>
             <tr> 
-              <td> <address>{{user.address}}</address> </td>
-              <td> <address>{{user.city}}, {{user.state}}</address></td>
+              <td>{{user.address}}</td>
+              <td>{{user.city}}, {{user.state}}</td>
             </tr>
           </table>
         </div><!-- /.span4 -->
         <div class="span4">
           <h2>Visit the community</h2>
          
-          <ul>
-            <li class="btn"><a href="/buyProduct">Buy from neighbors</a><br></li>
-           
-            <li class="btn"><a href="/addProduct">Sell to neighbors</a></br></li>
-          
-            <li class="btn"><a href="/communityBlog"> Talk with the community </a></br></li> 
-          </ul>           
+         <div class="list">
+         <ul>
+            <li><a href="/buyProduct"><i class="icon-leaf"> </i>Buy from neighbors</a></li>
+            </br>
+        
+            <li><a href="/addProduct"><i class="icon-leaf"> </i>Sell to neighbors</a></li>
+            </br>
+            <li><a href="/communityBlog"><i class="icon-leaf"> </i> Talk with the community </a></li>
+            </br>
+            <li><a href="logout"><i class="icon-leaf"> </i> Logout </a></li>
+          </ul>
+        </div>
           
         </div><!-- /.span4 -->
       </div><!-- /.row -->

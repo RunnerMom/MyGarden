@@ -11,6 +11,7 @@ SECRET_KEY = os.environ.get('key')
 
 CONSUMER_KEY = os.environ.get("CONSUMER_KEY")
 CONSUMER_SECRET = os.environ.get("CONSUMER_SECRET")
+api_key = os.environ.get("api_key")
 
 WTF_CSRF_ENABLED = True
 WTF_CSRF_SECRET_KEY = os.environ.get('key') 

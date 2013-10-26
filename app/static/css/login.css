@@ -7,9 +7,6 @@
       background-color: black;
     }
 
-    .division{
-      padding-top: 20px;
-    }
 
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -163,6 +160,30 @@
       }
     }
 
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      font-family: 'Rancho', cursive;
+      font-size: 30px;
+      text-align: justify;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .marketing .profile{
+      padding-top: 40px
+    }
+
+    .marketing li{
+      list-style-type: none;
+    }
 
     @media (max-width: 767px) {
 
