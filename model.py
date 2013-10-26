@@ -36,8 +36,10 @@ class Order(Base):
 	id = Column(Integer, primary_key = True)
 	order_date = Column(DateTime)
 	user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-	product_id = Column(Integer, ForeignKey('products.id'))
-	pickup_date = Column(DateTime)
+	product_id = Column(Integer, ForeignKey('product.id'))
+	pickup_date = Column(DateTime, nullable=False)
+	quantity = Column(Integer, nullable=False)
+	comments = Column(String(64), nullable=True)
 
 
 
@@ -50,7 +52,9 @@ class Product(Base):
 	nametag = Column(String(128), nullable = False)
 	quantity = Column(Integer, nullable = False)
 	expiration_date = Column(DateTime)
+	unit = Column(Enum('items', 'dozen', 'pounds', name='unit_types'))
 	price = Column(Float, nullable = False)
 	user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+	image_url = Column(String(256), nullable = True)
 
 
