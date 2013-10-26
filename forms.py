@@ -34,14 +34,40 @@ class AddProduct(Form):
 
 
 class CreateOrder(Form):
-	product_id = HiddenField('Product ID')
-	user_id = HiddenField('User ID')
-	order_date = HiddenField('Order date')
-	expiration_date = DateField('Pickup date', 
+	product_id = IntegerField('Product ID')
+	user_id = IntegerField('User ID')
+	order_date = DateField('Order date')
+	pickup_date = DateField('Pickup date', 
 					 [validators.Required(message=(u'When will you pick up your order?'))],
 					 description = 'Pickup date')
 	quantity = IntegerField('Quantity', 
 			   		[validators.Required(message=(u'Please indicate how many you want to buy'))],
 			   		description='Quantity')
+
+
+class Registration(Form):
+	user_id = IntegerField('User ID')
+	email = TextField('Email Address', 
+		    [validators.Email(message=(u"Looks like your email address is invalid.")),
+		    validators.Required(message=(u'Please enter your email address.'))],
+		    description='Email address')
+	phone = TextField('Phone Number', 
+		    [validators.Required(message=(u'Please enter your email address.'))],
+		    description='Phone number')
+	first_name = TextField('First Name',
+				 [validators.Required(message=(u'Please enter your first name'))],
+		    	 description='First name')
+	last_name =  first_name = TextField('Last Name',
+				 [validators.Required(message=(u'Please enter your last name'))],
+		    	 description='Last name')
+	street_address = TextField('Street Address',
+				 [validators.Required(message=(u'Please enter your street address'))],
+		    	 description='Street address')
+	city = TextField('City',
+		   [validators.Required(message=(u'Please enter your street address'))],
+		   description='City')
+	zip_code = TextField('Zip Code',
+		   [validators.Required(message=(u'Please enter your zip code'))],
+		   description='Zip code')
 
 
