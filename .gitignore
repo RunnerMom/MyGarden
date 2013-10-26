@@ -3,3 +3,4 @@ venv*
 *.py[co]
 .ds_store
 tmp
+alembic
