@@ -1,7 +1,8 @@
-from flask.ext.wtf import Form, validators
-from flask.ext.wtf import FloatField, TextField, HiddenField
-from flask.ext.wtf import PasswordField, IntegerField, DateField, SubmitField
-from flask.ext.wtf import BooleanField, SelectField, RadioField, SelectMultipleField, PasswordField
+from flask.ext.wtf import Form
+from wtforms.fields import FloatField, TextField, HiddenField
+from wtforms.fields import IntegerField, DateField, SubmitField
+from wtforms.fields import BooleanField, SelectField, RadioField, SelectMultipleField, PasswordField
+import wtforms.validators as validators
 import model
 
 class AddProduct(Form):
