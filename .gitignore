@@ -43,3 +43,9 @@ db_repository
 pg_dump.*
 alembic
 envgarden
+
+# Tests 
+maps_test
+maps_test_2
+libpeerconnection
+twilioapi
