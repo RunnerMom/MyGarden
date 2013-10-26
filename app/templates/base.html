@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lan="en">
+
+<head>
+	<title>Profile</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='http://fonts.googleapis.com/css?family=Pinyon+Script|Rancho' rel='stylesheet' type='text/css'>
+	<link href="../static/css/bootstrap.css" rel="stylesheet">
+  <!-- <link href="{{url_for('../static', filename='css/bootstrap.min.css')}}" rel="stylesheet"> -->
+  <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+  <!-- <link href="{{url_for('../static', filename='css/bootstrap-responsive.css')}}" rel="stylesheet"> -->
+  <link href="../static/css/login.css" rel="stylesheet">
+  <!-- <link href="{{url_for('../static', filename='css/login.css')}}" rel="stylesheet"> -->
+    
+    <style type="text/css">
+      body {
+        padding: 30px;
+        background-color: white;
+      }
+    </style>
+   
+</head>
+
+<body>
+  <div class="container">
+	<!-- NAVBAR
+    ================================================== -->
+   <div class="navbar navbar-inverse navbar-fixed-top"> 
+     <div class="navbar-inner">
+        <div class = "container">
+         	<h1> My Garden, Your Garden </h1>
+        </div>
+      </div>
+    </div>
+
+  <!-- Profile
+    ================================================== -->
+    <br><br><br>
+    <div class="container marketing">
+
+      <!-- Three columns pic, user info, menu -->
+      <div class="row">
+        <div class="span4">
+          <img class="img-circle" src="../static/img/twins.jpg">
+        </div>
+        <div class="span4">
+          <form action='/profile' method='GET'>
+          <table>
+            <tr><p> Welcome {{user.firstname}} {{user.lastname}} </p></tr>
+            <tr><p> Email: {{user.email}}</p></tr>
+            <tr> 
+              <td> <address>{{user.address}}</address> </td>
+              <td> <address>{{user.city}}, {{user.state}}</address></td>
+            </tr>
+          </table>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <h2>Visit the community</h2>
+         
+          <ul>
+            <li class="btn"><a href="/buyProduct">Buy from neighbors</a><br></li>
+           
+            <li class="btn"><a href="/addProduct">Sell to neighbors</a></br></li>
+          
+            <li class="btn"><a href="/communityBlog"> Talk with the community </a></br></li> 
+          </ul>           
+          
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+    </form>
+
+    </div><!--container-->
+	 
+   {%block context%}{%endblock%}
+	
+	<script src="http://code.jquery.com/jquery.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>

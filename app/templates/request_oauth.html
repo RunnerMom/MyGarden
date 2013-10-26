@@ -1,0 +1,65 @@
+<html>
+<head>
+<!--     Bootstrap for responsive grid -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ url_for('static', filename='js/bootstrap.min.css') }}"media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    <title>MyGarden</title>
+</head>
+<body>
+<div class="container">  
+
+    <div class="row">
+        <div class="col-md-10 .col-xs-12 col-md-offset-1">
+            <div class="head"><a href= "{{ url_for('request_oauth') }}"> </div></a>
+        </div>
+    </div>
+
+    <div class="row">  
+      <div class="col-md-10 .col-xs-12 col-md-offset-1">
+           <div class="ribbon">
+                <div class="ribbon-content"></div>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 .col-xs-12 col-md-offset-1">
+            <div class="content clearfix">
+                <h1 class="top-margin" id="title">Share your garden with friends.</h1>
+                <h4 id="description">My Garden allows you to connect with your fellow gardners to share extra produce and build a food community.</h4>
+            </div>
+       </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 .col-xs-12 col-md-offset-1">
+            <div class="content clearfix">
+                <div class="col-md-8 .col-xs-12 info">
+                    <h3>How it Works:</h3>
+                    <p>1. We search through your Linkedin contacts, finding fellow gardners. </p>
+                    </p>2. ... 
+                    <p>3. ...</p>
+                    <p class="small">*MyGarden works only in the United States currently.</p>
+                </div>
+                <div class="col-md-4 .col-xs-12 info">
+                    <h3>Get Started:</h3>
+                    <h4><a href= "{{ auth }}" >Authorize MyGarden</a> to access your Linkedin data.</a></h4>
+                    <p class="small">This application does not store your Linkedin login.</p>
+                </div>
+            </div>
+       </div>
+    </div>
+       <div class="row">
+        <div class="col-md-10 .col-xs-12 col-md-offset-1">
+            <div class="footer">
+                Developed by 
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+</html>
