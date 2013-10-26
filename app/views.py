@@ -1,23 +1,74 @@
-from flask import Flask, render_template, redirect, session, url_for
+from flask import Flask, render_template, redirect, session, url_for, g
 from app import app
 import urlparse
 import oauth2 as oauth
 import os
 from config import CONSUMER_KEY, CONSUMER_SECRET, api_key
 AUTHORIZE_URL = "/uas/oauth2/authorization?response_type=code"
-from model import user, buyers
+from model import user, User, buyers
+from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
+from forms import LoginForm
 
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
 
-consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
-client = oauth.Client(consumer)
+### Start LoginHandler settings
+#==============================
+
+lm = LoginManager()
+lm.init_app(app)
+lm.login_view = 'login'
+
+@lm.user_loader
+def load_user(id):
+    return session.query(User).get(id)
+
+@app.before_request
+def before_request():        
+        g.user = current_user
+
 
 #Upon accessing the index page, run a check to see if the user has already given authorization.
 @app.route('/')
 def index():
     return render_template('login.html', api_key=api_key)
- 
+
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+        if current_user is not None and current_user.is_authenticated():
+                return redirect(url_for('profile'))
+
+        form = LoginForm()
+        if form.validate_on_submit():
+
+                user= session.query(User).\
+                          filter_by(email=form.email.data, password=form.password.data).\
+                          first()
+        
+                if user is not None:
+                        login_user(user)        
+                else:
+                        flash("Invalid login")
+                
+                return redirect(request.args.get("next") or url_for('profile'))
+                
+        
+        return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+        logout_user()
+        return redirect('/')
+
+### End LoginHandler settings
+#============================
+
+#===============================================
+consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
+client = oauth.Client(consumer)
+
 #If the user needs to give authorization, request a request token and create a link to Linkedin.
 @app.route('/oauth', methods=['POST'])
 def request_oauth():
@@ -49,19 +100,18 @@ def get_access():
 
     session['access_token'] = access_token['oauth_token']
     session['access_token_secret'] = access_token['oauth_token_secret']
-    return redirect('/')
+    return redirect('/profile')
 
-@app.route('/logout')
-def logout():
-    return redirect('/')
-
-@app.route('/buyProduct')
-def buy_product():
-    return render_template('buy.html', user=user)
 
 @app.route('/profile')
+@login_required
 def profile():
     return render_template('base.html', user=user)
+
+@app.route('/buyProduct')
+@login_required
+def buy_product():
+    return render_template('buy.html', user=user)
 
 
 

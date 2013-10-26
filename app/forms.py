@@ -1,5 +1,5 @@
 from flask.ext.wtf import Form, validators
-from flask.ext.wtf import TextAreaField, FloatField, TextField, HiddenField
+from flask.ext.wtf import FloatField, TextField, HiddenField
 from flask.ext.wtf import PasswordField, IntegerField, DateField, SubmitField
 from flask.ext.wtf import BooleanField, SelectField, RadioField, SelectMultipleField
 import model

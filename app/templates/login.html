@@ -19,10 +19,17 @@
     ================================================== -->
    <div class="navbar navbar-inverse navbar-fixed-top"> 
      <div class="navbar-inner">
-        <div class = "container">
+<!--         <div class = "container">
           <script type="in/Login">
           Hello, <?js= firstName ?> <?js= lastName ?>.
           </script>
+        </div> -->
+        <div class = "container">
+          <form action="login" method="POST" class="navbar-form pull-right">
+            <input class="span2" type="text" placeholder="Email">
+            <input class="span2" type="password" placeholder="Password">
+            <button type="submit" class="btn">Sign in</button>
+          </form>
         </div>
       </div>
     </div>
