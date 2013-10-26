@@ -42,7 +42,6 @@ class Order(Base):
 	comments = Column(String(64), nullable=True)
 
 
-
 class Product(Base):
 
 	__tablename__ = 'products'
