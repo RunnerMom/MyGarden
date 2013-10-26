@@ -1,16 +1,13 @@
 from flask import Flask, render_template, redirect, session, url_for
+from app import app
 import urlparse
 import oauth2 as oauth
 import os
+from config import CONSUMER_KEY, CONSUMER_SECRET
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
 
-app = Flask(__name__)
-app.secret_key = 'key'
-
-consumer_key           = os.environ.get("CONSUMER_KEY")
-consumer_secret        = os.environ.get("CONSUMER_SECRET")
-consumer = oauth.Consumer(consumer_key, consumer_secret)
+consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
 client = oauth.Client(consumer)
 
 #Upon accessing the index page, run a check to see if the user has already given authorization.
@@ -32,8 +29,7 @@ def request_oauth():
     session['request_token'] = request_token['oauth_token']
     session['request_token_secret'] = request_token['oauth_token_secret']
     #Create a Linkedin link containing the request token.
-    authorize_link = '%s?oauth_token=%s' % (AUTHORIZE_URL,
-                                            request_token['oauth_token'])
+    authorize_link = '%s?oauth_token=%s' % (AUTHORIZE_URL,request_token['oauth_token'])
     return render_template("request_oauth.html", auth=authorize_link)
 
 #After the user has authorized, Linkedin will generate another token and redirect back to this route.
