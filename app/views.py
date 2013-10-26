@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, session, url_for, g
+from flask import Flask, render_template, redirect, session, url_for, g, flash
 from app import app
 import urlparse
 import oauth2 as oauth
@@ -26,6 +26,16 @@ def load_user(id):
 @app.before_request
 def before_request():        
         g.user = current_user
+
+
+from config import CONSUMER_KEY, CONSUMER_SECRET
+from model import user, buyers
+from forms import AddProduct
+
+# Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
+
+consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
+client = oauth.Client(consumer)
 
 
 #Upon accessing the index page, run a check to see if the user has already given authorization.
@@ -71,12 +81,22 @@ consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
 client = oauth.Client(consumer)
 
 #If the user needs to give authorization, request a request token and create a link to Linkedin.
+
 @app.route('/oauth', methods=['POST'])
 def request_oauth():
     request_token_url = 'https://api.linkedin.com/uas/oauth/requestToken'
     resp, content = client.request(request_token_url, "POST")
     if resp['status'] != '200':
         raise Exception("Invalid response %s." % resp['status'])
+
+@app.route('/request_oauth')
+def request_oauth():
+
+    request_token_url = 'https://api.linkedin.com/uas/oauth/requestToken'
+    resp, content = client.request(request_token_url, "POST")
+    if resp['status'] != '200':
+        raise Exception("Invalid response %s." % resp['status'])
+
      
     request_token = dict(urlparse.parse_qsl(content))
 
@@ -99,9 +119,14 @@ def get_access():
     access_token = dict(urlparse.parse_qsl(content))
 
 
+
     session['access_token'] = access_token['oauth_token']
     session['access_token_secret'] = access_token['oauth_token_secret']
     return redirect('/profile')
+
+#     session['access_token'] = access_token['oauth_token']
+#     session['access_token_secret'] = access_token['oauth_token_secret']
+#     return redirect('/')
 
 
 @app.route('/profile')
@@ -109,10 +134,35 @@ def get_access():
 def profile():
     return render_template('base.html', user=user)
 
+
 @app.route('/buyProduct')
 @login_required
 def buy_product():
     return render_template('buy.html', user=user)
+
+@app.route('/addProduct')
+def add_product():
+    form = AddProduct()
+    if form.validate_on_submit():
+
+        product = model.Product()
+        product.category = form.category.data
+        product.nametag = form.description.data
+        product.quantity = form.quantity.data
+        product.expiration = form.expiration.data
+        product.unit = form.unit.data
+        product.price = form.price.data
+        product.image_url = form.image_url.data
+        product.user_id = user.id
+
+        model.session.add(product)
+        model.session.commit()
+
+        flash("Your product has been added to the market!")
+        return render_template('add_product.html', form=form, user=user)
+
+    return render_template('add_product.html', form=form, user=user)
+
 
 
 
