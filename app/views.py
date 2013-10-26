@@ -4,6 +4,7 @@ import urlparse
 import oauth2 as oauth
 import os
 from config import CONSUMER_KEY, CONSUMER_SECRET
+from model import user, buyers
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
 
@@ -49,18 +50,19 @@ def get_access():
     session['access_token_secret'] = access_token['oauth_token_secret']
     return redirect('/')
 
+@app.route('/logout')
+def logout():
+    return redirect('/')
+
+@app.route('/buyProduct')
+def buy_product():
+    return render_template('buy.html', user=user)
+
 @app.route('/profile')
 def profile():
-    user = {firstname: 'Crystal', 
-            lastname: 'James',
-            email: 'crystalynn@yahoo.com',
-            phone: '+19176916498',
-            street_address: '2 Moneta Court',
-            city: 'Los Angeles',
-            state: 'CA',
-            zip_code: '90061'}
-    
     return render_template('base.html', user=user)
+
+
 
 
 if __name__ == "__main__":
