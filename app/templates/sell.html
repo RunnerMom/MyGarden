@@ -6,7 +6,7 @@
 <html lan="en">
 
 <head>
-	<title>Profile</title>
+	<title>Sell From Your Garden</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Pinyon+Script|Rancho' rel='stylesheet' type='text/css'>
@@ -42,55 +42,76 @@
     <div class="container marketing">
 
       <!-- START THE FEATURETTES -->
-      	<div class="span12">
-			<h1 class="header">Sell From Your Garden</h1>
-		</div>
+      <div class="span12">
+          <p>
+			    <h1 class="header">Sell From Your Garden</h1>
+		  </div>
+      <div class="span12">
+          <h3> <i class="icon-plus-sign"></i>Add Item to Inventory</h3>
+      </div>
+      <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Category</th>
+                  <th>Item Nametag</th>
+                  <th>Image</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><div class="input-append">
+                          <input class="span2" id="appendedDropdownButton" type="text">
+                            <div class="btn-group">
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                  </ul>
+                            </div><!-- /btn-group -->
+                      </div><!-- /input-append -->
+                  </td>
+                  <td>Otto</td>
+                  <td><span class="btn btn-file">Upload an image<input type="image" /></span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
       <div class="row">
-        <div class="span4">
-			<h3><i class="icon-plus-sign"></i> Add Item to Inventory</h3>
-         
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+        <div class="span3">
+	              <form class="form-inline" action="/add_product">
+                  <input type="dropdown" name="category" placeholder="Category" />
+                  <br />
         </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>Heading</h2>
-      
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+        <div class="span3">
+                  <input type="text" name="nametag" placeholder="NameYourItem" />
+                  <br />
         </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>Heading</h2>
-         
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-      </div><!-- /.row -->
-      <hr class="featurette-divider">
-<div class="container">
-	<div class="row">
-		<div class="span12">
-			<h1 class="header">Sell From Your Garden</h1>
-		</div>
-		<div class="span4">
-			<h3><i class="icon-plus-sign"></i> Add Item to Inventory</h3>
-			<form action="/add_product">
-				<input type="text" name="title" placeholder="Title" />
-				
-				<input type="text" name="author" placeholder="Author" />
-				<br />
-				<textarea name="body" placeholder="Post Body"></textarea>
-				<br />
-				<input class="btn" type="submit" value="Add Item" />
-			</form>
-		</div>
-	<div class="fileupload fileupload-new" data-provides="fileupload">
-  		<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
-  			<div>
-    			<span class="btn btn-file"><span class="fileupload-new">Select image</span><input type="file" /></span>
-    			
-  			</div>
-		</div>
 
-	</div>
+        <div class="span3">
+          <span class="btn btn-file"><span class="fileupload-new">Select image</span><input type="file" /></span>
+        </div>
+        <div class="span3">
+                  <input class="btn" type="submit" value="Add Item" />
+        </div><!-- /.span4 -->
+        </form> 
+      </div><!-- /.row -->
+      
 </div>
       
 
