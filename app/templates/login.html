@@ -10,7 +10,7 @@
   <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="../static/css/login.css" rel="stylesheet">
   <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-    api_key: {{ api_key }}
+
   </script>
 </head>
 
@@ -18,12 +18,14 @@
     <!-- NAVBAR
     ================================================== -->
    <div class="navbar navbar-inverse navbar-fixed-top"> 
+
    <div class="navbar-inner">
           <div class = "container">
         <script type="in/Login">
         Hello, <?js= firstName ?> <?js= lastName ?>.
         </script>
       </div>
+
         <div class = "container">
           <form action="profile" method="POST" class="navbar-form pull-right">
             <input class="span2" type="text" placeholder="Email">

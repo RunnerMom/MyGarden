@@ -3,7 +3,7 @@ from app import app
 import urlparse
 import oauth2 as oauth
 import os
-from config import CONSUMER_KEY, CONSUMER_SECRET, api_key
+# from config import CONSUMER_KEY, CONSUMER_SECRET, api_key
 AUTHORIZE_URL = "/uas/oauth2/authorization?response_type=code"
 from model import user, User, buyers
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
@@ -28,20 +28,20 @@ def before_request():
         g.user = current_user
 
 
-from config import CONSUMER_KEY, CONSUMER_SECRET
+# from config import CONSUMER_KEY, CONSUMER_SECRET
 from model import user, buyers
 from forms import AddProduct
 
 # Linkedin site for more info: http://developer.linkedin.com/documents/common-issues-oauth-authentication
 
-consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
-client = oauth.Client(consumer)
+# consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
+# client = oauth.Client(consumer)
 
 
 #Upon accessing the index page, run a check to see if the user has already given authorization.
 @app.route('/')
 def index():
-    return render_template('login.html', api_key=api_key)
+    return render_template('login.html')
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -76,10 +76,10 @@ def logout():
 #============================
 
 #===============================================
-consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
-client = oauth.Client(consumer)
+# consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
+# client = oauth.Client(consumer)
 
-#If the user needs to give authorization, request a request token and create a link to Linkedin.
+# #If the user needs to give authorization, request a request token and create a link to Linkedin.
 
 # @app.route('/oauth', methods=['POST'])
 # def request_oauth():
