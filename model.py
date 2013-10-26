@@ -36,7 +36,7 @@ class Order(Base):
 	id = Column(Integer, primary_key = True)
 	order_date = Column(DateTime)
 	user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-	product_id = Column(Integer, ForeignKey(''))
+	product_id = Column(Integer, ForeignKey('products.id'))
 	pickup_date = Column(DateTime)
 
 
