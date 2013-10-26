@@ -37,3 +37,4 @@ db_repository
 *.dump
 pg_dump.*
 alembic
+envgarden
