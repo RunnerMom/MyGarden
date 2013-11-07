@@ -7,16 +7,18 @@ from signal import signal, SIGPIPE, SIG_DFL
 #Ignore SIG_PIPE and don't throw exceptions on it... (http://docs.python.org/library/signal.html)
 signal(SIGPIPE,SIG_DFL) 
 
+#Flask secret key
 SECRET_KEY = os.environ.get('key')
-# SECRET_KEY = 'agajshfjgfkjsgfka'
 
-# CONSUMER_KEY = os.environ.get("CONSUMER_KEY")
-# CONSUMER_SECRET = os.environ.get("CONSUMER_SECRET")
-# api_key = os.environ.get("api_key")
+#Linkedin secret key
+CONSUMER_KEY = os.environ.get("CONSUMER_KEY")
+CONSUMER_SECRET = os.environ.get("CONSUMER_SECRET")
+api_key = os.environ.get("api_key")
 
 WTF_CSRF_ENABLED = True
 WTF_CSRF_SECRET_KEY = os.environ.get('key') 
-# WTF_CSRF_SECRET_KEY = 'assssadadadsad'
+
+LINKEDIN_API_KEY = os.environ.get('linkedin_api')
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

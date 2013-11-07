@@ -1,29 +1,41 @@
 {% extends 'base.html' %}
 
 {% block context %}
-<hr>
-    <div class="addProduct">
-        <div class='addProduct-heading'>
-            <h2>Produce Market <span class="muted">What would you like to sell today?</span></h2>
 
-        <form action="">
-            {{form.hidden_tag()}}
+    <form action="/addProduct">
+    <div class="container marketing">
+      
+      <div class="row well">
+    
         
-            <p> Choose a category: {{form.category}}</p>
-            <p> Description: {{form.description}} </p>
+        <div class="span4">
+          <p> Choose a category
+          <br> {{form.category}}</p>
+          <p> Description: 
+          <br>{{form.description}} </p>
+        </div><!-- /.span4 -->
         
-            <p> Select a price unit: {{form.unit}}</p>
-            <p> Price per unit: {{form.price}}</p>
-            <p> How many units are you selling? {{form.quantity}}</p>
+        <div class="span4"> 
+            <p> Price/unit: 
+            <br>{{form.price}}</p>
+            <p> Units: 
+            <br>{{form.unit}}</p>
+            <p> Quantity
+            <br> {{form.quantity}}</p>
+        </div>
         
-            <p> When will this product expire? {{form.expiration_date}} </p>
+        <div class="span4">
+            <p> Product Expiration Date
+            <br> {{form.expiration_date}} </p>
+            <p> Add an image url (Optional):
+            <br>{{form.image_url}} </p>
+        </div>
         
-            <p> Add an image url (Optional): {{form.image_url}} </p>
+       
+      </div> <!--row-->
+    </div><!--container-->
+    </form>
 
-            <input  class="button" type="submit" value="Add Produce to Market!">
-        </form>
-    </div>
-    </div>
-    </div>
+   
 
 {% endblock %}

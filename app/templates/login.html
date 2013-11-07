@@ -9,24 +9,34 @@
   <link href="../static/css/bootstrap.css" rel="stylesheet">
   <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="../static/css/login.css" rel="stylesheet">
-  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  
 
+  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: {{api_key}}
+    authorize: true
   </script>
+ 
+  <script type="text/javascript">
+  function onLinkedInAuth() {
+    IN.API.Profile("me")
+      .result( function(me) {
+        var id = me.values[0].id;
+        // AJAX call to pass back id to your server
+      });
+    }
+  </script>
+
 </head>
 
 <body>
+
     <!-- NAVBAR
     ================================================== -->
    <div class="navbar navbar-inverse navbar-fixed-top"> 
 
+   
    <div class="navbar-inner">
-          <div class = "container">
-        <script type="in/Login">
-        Hello, <?js= firstName ?> <?js= lastName ?>.
-        </script>
-      </div>
-
-        <div class = "container">
+        <div class ="container">
           <form action="profile" method="POST" class="navbar-form pull-right">
             <input class="span2" type="text" placeholder="Email">
             <input class="span2" type="password" placeholder="Password">
@@ -100,6 +110,16 @@
         })
     }(window.jQuery);
     </script>
+
+    <script type="IN/Login"> 
+    <form action="/register.html"> 
+    <p>Your Name: <input type="text" name="name" value="<?js= firstName ?> <?js= lastName ?>" /></p>
+    <p>Your Password: <input type="password" name="password" /></p>
+    <input type="hidden" name="linkedin-id" value="<?js= id ?>" />
+    <input type="submit" name="submit" value="Sign Up"/>
+    </script>
+    
+    <script type="IN/Login" data-onAuth="onLinkedInAuth"></script>
     
   </body>
 </html>

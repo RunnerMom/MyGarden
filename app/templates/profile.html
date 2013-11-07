@@ -3,9 +3,9 @@
 
 <head>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Pinyon+Script|Rancho' rel='stylesheet' type='text/css'>
-	
+  
   <link href="../static/css/bootstrap.css" rel="stylesheet">
   <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="../static/css/login.css" rel="stylesheet">
@@ -22,34 +22,16 @@
 
 <body>
   <div class="container">
-	<!-- NAVBAR
+  <!-- NAVBAR
     ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-top"> 
     <div class="navbar-inner">
       <div class="container">
+        <h1> My Garden, Your Garden </h1>
+      </div>
       
-      <div class="row">
-      <div class="span10"> <h1> My Garden, Your Garden </h1></div>
-      
-      <div class="dropdown span2">
-        <button data-toggle="dropdown"><i class="icon-th-large"></i></button>
-
-        <div class="dropdown-menu">
-          <div class="well" style="width:300px; padding: 8px 0;">
-            <ul class="nav-list">
-              <li class="nav-header">Visit the Community</li>        
-              <li><a href="profile"><i class="icon-home"></i> Dashboard</a></li>
-              <li><a href="buyProduct"><i class="icon-edit"></i> Buy Produce</a></li>
-              <li><a href="addProduct"><i class="icon-user"></i> Sell Produce</a></li>
-              <li><a href="communityBlog"><i class="icon-comment"></i> Join Community</a></li>
-              <li><a href="logout"><i class="icon-road"></i> Logout</a></li>
-            </ul>
-          </div>
-        </div> 
+        
      
-      </div><!--Dopdown End-->
-      </div><!--row-->
-      </div><!--container-->
     </div>
   </div>
 
@@ -61,8 +43,6 @@
 
       <!-- Three columns pic, user info, menu -->
       <div class="row">
-
-        <div class="span4"></div>
 
         <div class="span4">
 
@@ -87,13 +67,28 @@
 
         <div class="span4"></div>
 
+        <div class="span4">
+          <div class="nav-bar">
+          <div class="well" style="width:300px; padding: 8px 0;">
+            <ul class="nav-list">
+              <li class="nav-header">Visit the Community</li>        
+              <li><a href="profile"><i class="icon-home"></i> Dashboard</a></li>
+              <li><a href="buyProduct"><i class="icon-edit"></i> Buy Produce</a></li>
+              <li><a href="addProduct"><i class="icon-user"></i> Sell Produce</a></li>
+              <li><a href="communityBlog"><i class="icon-comment"></i> Join Community</a></li>
+              <li><a href="logout"><i class="icon-road"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div> 
+        </div>
+
       </div><!-- /.row -->
     </div><!--marketing container-->
-	  {%block context%}{%endblock%}
+    {%block context%}{%endblock%}
 
     </div><!--base container-->
-	
-	<script src="http://code.jquery.com/jquery.js"></script>
+  
+  <script src="http://code.jquery.com/jquery.js"></script>
   <script src="../static/js/bootstrap.min.js"></script>
   <script>
   $('.dropdown-toggle').dropdown()

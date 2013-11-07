@@ -1,35 +1,127 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
-{%block context%}
+{% block body %}
 
-<!-- Show OrderForm,Purchases, Map -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-      <hr class="featurette-divider">
+    <div class="container marketing">
 
-      <div class="featurette">
-        <img class="featurette-image pull-right" src="../static/img/seller2.jpeg" width="200" height="200">
-        <h2 class="featurette-heading">Produce Market: <span class="muted">What would you like to purchase today?</span></h2>
-        <form action='buyProduct'></form>
+      <!-- START THE FEATURETTES -->
+      <div class="span12">
+          <p>
+			    <h1 class="header">Sell From Your Garden</h1>
+		  </div>
+      <div class="span12">
+          <h3> <i class="icon-plus-sign"></i>Add Item to Inventory</h3>
       </div>
+      <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Category</th>
+                  <th>Item Nametag</th>
+                  <th>Image</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><div class="input-append">
+                          <input class="span2" id="appendedDropdownButton" type="text">
+                            <div class="btn-group">
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                  </ul>
+                            </div><!-- /btn-group -->
+                      </div><!-- /input-append -->
+                  </td>
+                  <td>Otto</td>
+                  <td><span class="btn btn-file">Upload an image<input type="image" /></span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+      <div class="row">
+        <div class="span3">
+	              <form class="form-inline" action="/add_product">
+                  <input type="dropdown" name="category" placeholder="Category" />
+                  <br />
+        </div><!-- /.span4 -->
+        <div class="span3">
+                  <input type="text" name="nametag" placeholder="NameYourItem" />
+                  <br />
+        </div><!-- /.span4 -->
 
-      <hr class="featurette-divider">
-
-      <div class="featurette">
-        <img class="featurette-image pull-left" src="../assets/img/examples/browser-icon-firefox.png">
-        <h2 class="featurette-heading">Oh yeah, it's that good: <span class="muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="featurette">
-        <img class="featurette-image" src="">
-        <h2 class="featurette-heading">Gardeners in your area!!</h2>
-      </div>
-
-      <hr class="featurette-divider">
+        <div class="span3">
+          <span class="btn btn-file"><span class="fileupload-new">Select image</span><input type="file" /></span>
+        </div>
+        <div class="span3">
+                  <input class="btn" type="submit" value="Add Item" />
+        </div><!-- /.span4 -->
+        </form> 
+      </div><!-- /.row -->
+      
+</div>
+      
 
       <!-- /END THE FEATURETTES -->
 
 
-{%endblock%}
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Team Hackbright, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+    <script src="../assets/js/holder/holder.js"></script>
+  </body>
+</html>
+
+
+{% endblock %}
