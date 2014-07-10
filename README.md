@@ -10,6 +10,8 @@ AimeeMorgan
 NyghtOwl
 
 Egoyibo
+
+Project Overview
 ==============================
 The Objective of My Garden, Your Garden is to allow neighbors to buy, sell and trade fresh fruits and vegetables from their home gardens. 
 
