@@ -21,5 +21,5 @@ Concept:
 3. Upon placement of an order, seller will receive a text message from the application stating. "Order has been placed for XXX items, Pickup requested at 5pm tonight."
 
 ====================================
-Status: Incomplete
-Twilio and Gmaps widgets working
+Status:
+Twilio and Gmaps widgets working --- garden app incomplete
